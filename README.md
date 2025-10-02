@@ -25,16 +25,18 @@ Quick Start
   >`ALBUM_DIR="/full/path/to/your/album"` 
   >The script will create an output folder in this directory for the separated stems.
 
-4. **Run the Script**
+4. **Run the Scripts**
 
-  >Make it executable:
-  >`chmod +x spleeter_album.sh`
+  >Make them executable:
+  >`chmod +x spleeter_album_1.sh`
+  >`chmod +x rename_and_groupe_2.sh`
   >Then run:
-  >`./spleeter_album.sh`
+  >`./spleeter_album_1.sh`
   >For each MP3 in your folder, the script will:
   >Print the file being processed.
   >Separate it into vocals and accompaniment using Spleeter in Docker.
   >Save the stems in the output folder.
+  
 
 5. **Output**
   
@@ -50,9 +52,11 @@ Quick Start
       └── 02 - Track2/
         ├── vocals.wav
         └── accompaniment.wav </pre>
-
-Notes
-
-The script handles spaces and special characters in filenames.
-
-To use a different stem model, change the -p argument in the script, e.g., -p spleeter:4stems.
+**Notes**
+>The script handles spaces and special characters in filenames.
+>To use a different stem model, change the -p argument in the script, e.g., -p spleeter:4stems.
+        
+6. **Run rename_and_group_2.sh**
+  > Run
+  > `./rename_and_groupe_2.sh`
+  > This script automates gathering the accompaniment tracks from Spleeter’s output. For each song folder in the Spleeter output, it copies the accompaniment.wav file, renames it to match the original song’s name, and places all collected accompaniments into a single folder. This makes it easy to organize and access instrumentals without manually renaming or moving files.
