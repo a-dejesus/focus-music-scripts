@@ -4,3 +4,67 @@ Bash scripts to remove vocals from music folders, creating lyric-free focus trac
 This project started from a simple need: I wanted to listen to music without lyrics while working. These bash scripts process a folder of music to produce instrumental-only tracks, helping me maintain focus.
 
 It’s a small project, but meaningful — it reflects problem-solving without emotional friction, just tinkering and making something useful for daily life.
+
+Spleeter Album Separation Script
+
+This repository contains a shell script to automatically separate MP3 tracks into stems (vocals and accompaniment) using Spleeter in Docker.
+
+Quick Start
+1. Install Requirements
+
+Docker installed and running.
+
+A folder containing the MP3 tracks you want to process.
+
+2. Pull the Spleeter Docker Image
+
+Run:
+
+docker pull deezer/spleeter:3.6-2stems
+
+3. Configure the Script
+
+Open spleeter_album.sh and set the ALBUM_DIR variable to your folder path:
+
+ALBUM_DIR="/full/path/to/your/album"
+
+The script will create an output folder in this directory for the separated stems.
+
+4. Run the Script
+
+Make it executable:
+
+chmod +x spleeter_album.sh
+
+Then run:
+
+./spleeter_album.sh
+
+For each MP3 in your folder, the script will:
+
+Print the file being processed.
+
+Separate it into vocals and accompaniment using Spleeter in Docker.
+
+Save the stems in the output folder.
+
+5. Output
+
+After running, your folder will look like:
+
+AlbumFolder/
+├── 01 - Track1.mp3
+├── 02 - Track2.mp3
+└── output/
+├── 01 - Track1/
+│ ├── vocals.wav
+│ └── accompaniment.wav
+└── 02 - Track2/
+├── vocals.wav
+└── accompaniment.wav
+
+Notes
+
+The script handles spaces and special characters in filenames.
+
+To use a different stem model, change the -p argument in the script, e.g., -p spleeter:4stems.
